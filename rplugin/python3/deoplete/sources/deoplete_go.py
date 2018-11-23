@@ -63,6 +63,8 @@ class Source(Base):
             vars.get('deoplete#sources#go#unimported_packages', False)
         self.use_cache = \
             vars.get('deoplete#sources#go#use_cache', False)
+        self.fallback_to_source = \
+            vars.get('deoplete#sources#go#fallback_to_source', False)
 
         self.loaded_gocode_binary = False
         self.complete_pos = re.compile(r'\w*$|(?<=")[./\-\w]*$')
@@ -226,6 +228,8 @@ class Source(Base):
             args.append('-unimported-packages')
         if self.use_cache:
             args.append('-cache')
+        if self.fallback_to_source:
+            args.append('-fallback-to-source')
         # basically, '-sock' option for mdempsky/gocode.
         # probably meaningless in nsf/gocode that already run the rpc server
         if self.sock != '' and self.sock in ['unix', 'tcp', 'none']:

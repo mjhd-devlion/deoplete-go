@@ -30,3 +30,6 @@ let g:deoplete#sources#go#cgo =
 
 let g:deoplete#sources#go#on_event = 
       \ get(g:, 'deoplete#sources#go#on_event', 0)
+
+let g:deoplete#sources#go#fallback_to_source =
+      \ get(g:, 'deoplete#sources#go#fallback_to_source', 0)
